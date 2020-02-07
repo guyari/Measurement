@@ -1,0 +1,8 @@
+node_modules/
+.idea
+Pods/
+.DS_Store
+*.a
+!lib.a
+build/
+*~
