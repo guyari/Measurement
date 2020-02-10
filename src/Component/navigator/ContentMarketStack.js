@@ -8,6 +8,7 @@ import ListOfDetails from "../../container/ContentMarket/ListOf/ListOfDetails";
 import ABriefListOf from "../../container/ContentMarket/ABriefListOf/ABriefListOf";
 import ABriefListDetails from "../../container/ContentMarket/ABriefListOf/ABriefListDetails";
 
+//内容市场导航
 const ContentMarketStack = createStackNavigator({
     ContentMarket: ContentMarket,  //内容市场类
     GraphicList: GraphicList,      //图文列表类

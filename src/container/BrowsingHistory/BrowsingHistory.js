@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, Image, SectionList, TouchableOpacity, Dimensions} from 'react-native';
+import {View, Text, Image, SectionList, TouchableOpacity, Dimensions, Button} from 'react-native';
 
 import {GraphicListStyles} from "../ContentMarket/GraphicList/GraphicList";
 import {ListOfStyles} from "../ContentMarket/ListOf/ListOf";
@@ -8,7 +8,8 @@ import {ABriefListOfStyles} from '../ContentMarket/ABriefListOf/ABriefListOf';
 //浏览记录
 export default class BrowsingHistory extends Component {
   static navigationOptions = ({navigation}) => ({
-    title: '移动端Demo'
+    title: '移动端Demo',
+    headerRight: <Button title='搜索' onPress={()=>navigation.navigate('SearchView')}/>
   });
 
   constructor(props) {
