@@ -9,7 +9,7 @@ export default class GraphicList extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <View style={GraphicListStyles.container}>
                 <FlatList
                     data={DATA}
                     renderItem = {({item, index})=>this._renderRow(item, index)}
@@ -22,14 +22,14 @@ export default class GraphicList extends Component {
 
     _renderRow(rowData, rowId) {
         return  (
-            <TouchableOpacity key={rowId} style={styles.cellStyle} onPress={() => this.props.navigation.navigate('GraphicListDetails', {data: rowData, rowId: rowId})}>
-                <Image source={require('../../../images/trained.png')} style={styles.imageStyle}/>
-                <View style={styles.content}>
-                    <Text style={styles.title} numberOfLines={1} ellipsizeMode='tail'>{rowData.title}</Text>
-                    <Text style={styles.subtitle}>{rowData.subtitle}</Text>
+            <TouchableOpacity key={rowId} style={GraphicListStyles.cellStyle} onPress={() => this.props.navigation.navigate('GraphicListDetails', {data: rowData, rowId: rowId})}>
+                <Image source={require('../../../images/trained.png')} style={GraphicListStyles.imageStyle}/>
+                <View style={GraphicListStyles.content}>
+                    <Text style={GraphicListStyles.title} numberOfLines={1} ellipsizeMode='tail'>{rowData.title}</Text>
+                    <Text style={GraphicListStyles.subtitle}>{rowData.subtitle}</Text>
                     <View style={{flex: 1, flexDirection: 'row', position: 'relative'}}>
-                        <Text style={styles.author}>{rowData.author}</Text>
-                        <Text style={styles.dateOf}>{rowData.dateOf}</Text>
+                        <Text style={GraphicListStyles.author}>{rowData.author}</Text>
+                        <Text style={GraphicListStyles.dateOf}>{rowData.dateOf}</Text>
                     </View>
                 </View>
             </TouchableOpacity>
@@ -54,7 +54,7 @@ export default class GraphicList extends Component {
 }
 
 
-const styles = StyleSheet.create({
+export const GraphicListStyles = StyleSheet.create({
     container: {
         flex: 1,
     },
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
         width: 130,
         height: 101,
         marginLeft: 21,
-        marginTop: 13,
+        marginTop: 13
     },
     title: {
         marginLeft: 20,

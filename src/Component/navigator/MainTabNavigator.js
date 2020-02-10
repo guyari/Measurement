@@ -5,6 +5,7 @@ import {createBottomTabNavigator, BottomTabBar} from "react-navigation-tabs";
 
 import ContentMarketStack from "./ContentMarketStack";
 import BrowsingHistory from "../../container/BrowsingHistory/BrowsingHistory";
+import {createStackNavigator} from "react-navigation-stack";
 
 // 底部导航
 const TABS = {
@@ -22,7 +23,7 @@ const TABS = {
         }
     },
     BrowsingHistory: {
-        screen: BrowsingHistory,
+        screen: createStackNavigator({BrowsingHistory:BrowsingHistory}),
         navigationOptions: {
             tabBarLabel: '浏览记录',
             tabBarIcon: ({focused}) => {

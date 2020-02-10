@@ -9,7 +9,7 @@ import AbriefListOf from './ABriefListOf/ABriefListOf';
 //内容市场
 export default class ContentMarket extends Component {
     static navigationOptions = ({navigation}) => ({
-        title: 'Demo'
+        title: '移动端Demo'
     });
 
     constructor(props) {

@@ -9,12 +9,12 @@ export default class ABriefListOf extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <View style={ABriefListOfStyles.container}>
                 <FlatList
                     data={DATA}
                     renderItem={({item, index}) => this._renderRow(item, index)}
                     keyExtractor={(item, index) => item + index}
-                    ItemSeparatorComponent={this.renderSeparator}
+                    ItemSeparatorComponent={this._renderSeparator}
                 />
             </View>
         );
@@ -22,8 +22,8 @@ export default class ABriefListOf extends Component {
 
     _renderRow(rowData, rowId) {
         return (
-            <TouchableOpacity key={rowId} style={styles.cellStyle} onPress={() => this.props.navigation.navigate('ABriefListDetails', {data: rowData, rowId: rowId})}>
-                <Text style={styles.titleStyle} numberOfLines={1} ellipsizeMode='tail'>
+            <TouchableOpacity key={rowId} style={ABriefListOfStyles.cellStyle} onPress={() => this.props.navigation.navigate('ABriefListDetails', {data: rowData, rowId: rowId})}>
+                <Text style={ABriefListOfStyles.titleStyle} numberOfLines={1} ellipsizeMode='tail'>
                     {rowData.title}
                 </Text>
             </TouchableOpacity>
@@ -31,7 +31,7 @@ export default class ABriefListOf extends Component {
     };
 
     // cell分割线
-    renderSeparator = () => {
+    _renderSeparator = () => {
         return (
             <View
                 style={{
@@ -46,7 +46,7 @@ export default class ABriefListOf extends Component {
     };
 }
 
-const styles = StyleSheet.create({
+export const ABriefListOfStyles = StyleSheet.create({
     container: {
         flex: 1,
     },

@@ -9,12 +9,12 @@ export default class ListOf extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <View style={ListOfStyles.container}>
                 <FlatList
                     data={DATA}
                     renderItem={({item, index}) => this._renderRow(item, index)}
                     keyExtractor={(item, index) => item + index}
-                    ItemSeparatorComponent={this.renderSeparator}
+                    ItemSeparatorComponent={this._renderSeparator}
                 />
             </View>
         );
@@ -22,17 +22,17 @@ export default class ListOf extends Component {
 
     _renderRow(rowData, rowId) {
         return (
-            <TouchableOpacity key={rowId} style={styles.cellStyle} onPress={() => this.props.navigation.navigate('ListOfDetails', {data: rowData, rowId: rowId})}>
-                <Text style={styles.titleStyle} numberOfLines={1} ellipsizeMode='tail'>
+            <TouchableOpacity key={rowId} style={ListOfStyles.cellStyle} onPress={() => this.props.navigation.navigate('ListOfDetails', {data: rowData, rowId: rowId})}>
+                <Text style={ListOfStyles.titleStyle} numberOfLines={1} ellipsizeMode='tail'>
                     {rowData.title}
                 </Text>
-                <Text style={styles.contentStyle} numberOfLines={3} ellipsizeMode='tail'>{rowData.content}</Text>
+                <Text style={ListOfStyles.contentStyle} numberOfLines={3} ellipsizeMode='tail'>{rowData.content}</Text>
             </TouchableOpacity>
         );
     };
 
     // cell分割线
-    renderSeparator = () => {
+    _renderSeparator = () => {
         return (
             <View
                 style={{
@@ -47,7 +47,7 @@ export default class ListOf extends Component {
     };
 }
 
-const styles = StyleSheet.create({
+export const ListOfStyles = StyleSheet.create({
     container: {
         flex: 1,
     },
