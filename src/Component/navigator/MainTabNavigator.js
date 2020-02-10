@@ -4,8 +4,7 @@ import {createAppContainer} from 'react-navigation';
 import {createBottomTabNavigator, BottomTabBar} from "react-navigation-tabs";
 
 import ContentMarketStack from "./ContentMarketStack";
-import BrowsingHistory from "../../container/BrowsingHistory/BrowsingHistory";
-import {createStackNavigator} from "react-navigation-stack";
+import BrowsingHistoryStack from "./BrowsingHistoryStack";
 
 // 底部导航
 const TABS = {
@@ -23,7 +22,7 @@ const TABS = {
         }
     },
     BrowsingHistory: {
-        screen: createStackNavigator({BrowsingHistory:BrowsingHistory}),
+        screen: BrowsingHistoryStack,
         navigationOptions: {
             tabBarLabel: '浏览记录',
             tabBarIcon: ({focused}) => {
@@ -47,7 +46,7 @@ export default class MainTabNavigator extends Component {
                     tabBarComponent: props => (
                         <BottomTabBar {...props} activeTintColor='rgb(255,141, 45)'/>
                     ),
-                }
+                },
             ))
         }
         return this.tabNavigator;

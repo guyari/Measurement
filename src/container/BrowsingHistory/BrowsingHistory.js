@@ -50,7 +50,7 @@ export default class BrowsingHistory extends Component {
   // 图文列表cell
   _graphicRenderRow(rowData, rowId) {
     return  (
-        <TouchableOpacity key={rowId} style={GraphicListStyles.cellStyle}>
+        <TouchableOpacity key={rowId} style={GraphicListStyles.cellStyle} onPress={() => this.props.navigation.navigate('GraphicListDetails', {data: rowData, rowId: rowId})}>
           <Image source={require('../../images/trained.png')} style={GraphicListStyles.imageStyle}/>
           <View style={GraphicListStyles.content}>
             <Text style={GraphicListStyles.title} numberOfLines={1} ellipsizeMode='tail'>{rowData.title}</Text>
