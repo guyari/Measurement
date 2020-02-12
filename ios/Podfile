@@ -34,6 +34,8 @@ target 'Measurement' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
+  pod 'Picker', :path => '../node_modules/react-native-picker'
+
   target 'MeasurementTests' do
     inherit! :search_paths
     # Pods for testing
@@ -49,5 +51,6 @@ target 'Measurement-tvOS' do
     inherit! :search_paths
     # Pods for testing
   end
+
 
 end
