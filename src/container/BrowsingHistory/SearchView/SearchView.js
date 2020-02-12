@@ -11,7 +11,7 @@ export default class SearchView extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentDate:this._getCurrentDate(),
+            latestDate: this._getCurrentDate(),
             titleSearch: '',
             contentType: [],
         }
@@ -22,45 +22,50 @@ export default class SearchView extends Component {
             <SafeAreaView style={SearchStyles.container}>
                 <View style={SearchStyles.bgView1Style}>
                     <Text>最晚日期：</Text>
-                    <TouchableOpacity style={SearchStyles.dateSelectionStyle} onPress={()=>this._showDatePicker()}><Text>{this.state.currentDate}</Text></TouchableOpacity>
+                    <TouchableOpacity style={SearchStyles.dateSelectionStyle} onPress={()=>this._showDatePicker()}><Text>{this.state.latestDate}</Text></TouchableOpacity>
                 </View>
 
                 <View style={SearchStyles.bgView2Style}>
                     <Text>标题搜索：</Text>
-                    <TextInput style={SearchStyles.textInputStyle} onChangeText={text => (this.state.titleSearch = text)} placeholder={'文本输入'}/>
+                    <TextInput style={SearchStyles.textInputStyle} onChangeText={value => (this.setState({titleSearch: value}))} placeholder={'文本输入'} />
                 </View>
 
                 <View style={SearchStyles.bgView3Style}>
                     <Text style={SearchStyles.contentTypeTextStyle}>内容类型（多选)：</Text>
                     <View style={{flexDirection: 'row', flex: 1, marginLeft: 11}}>
-                        <TouchableOpacity style={[SearchStyles.byMultipleBtnStyle, {backgroundColor: this.state.contentType.indexOf('0')?'yellow':''}]} onnPress={()=>this._typeSelection('0')}><Text>图文型</Text></TouchableOpacity>
-                        <TouchableOpacity style={SearchStyles.alternativeBtnStyle} onnPress={()=>this._typeSelection('1')}><Text>摘要型</Text></TouchableOpacity>
-                        <TouchableOpacity style={SearchStyles.simpleMultipleBtnStyle} onnPress={()=>this._typeSelection('2')}><Text>简单型</Text></TouchableOpacity>
+                        <TouchableOpacity style={[SearchStyles.byMultipleBtnStyle, {backgroundColor: this.state.contentType.indexOf('0')!==-1?'red':'white'}]} onPress={()=>this._typeSelection('0')}><Text>图文型</Text></TouchableOpacity>
+                        <TouchableOpacity style={[SearchStyles.alternativeBtnStyle, {backgroundColor: this.state.contentType.indexOf('1')!==-1?'red':'white'}]} onPress={()=>this._typeSelection('1')}><Text>摘要型</Text></TouchableOpacity>
+                        <TouchableOpacity style={[SearchStyles.simpleMultipleBtnStyle, {backgroundColor: this.state.contentType.indexOf('2')!==-1?'red':'white'}]} onPress={()=>this._typeSelection('2')}><Text>简单型</Text></TouchableOpacity>
                     </View>
                 </View>
 
                 <View style={SearchStyles.bgView4Style}>
-                    <TouchableOpacity style={SearchStyles.cancelBtnStyle} activeOpacity={0.7} onPress={()=>this.props.navigation.goBack()}><Text>取消</Text></TouchableOpacity>
-                    <TouchableOpacity style={SearchStyles.doneBtnStyle} activeOpacity={0.7} onPress={()=>this._doneBtnClick()}><Text>确定</Text></TouchableOpacity>
+                    <TouchableOpacity style={SearchStyles.cancelBtnStyle} onPress={()=>this.props.navigation.goBack()}><Text>取消</Text></TouchableOpacity>
+                    <TouchableOpacity style={SearchStyles.doneBtnStyle} onPress={()=>this._doneBtnClick()}><Text>确定</Text></TouchableOpacity>
                 </View>
             </SafeAreaView>
         );
     }
 
-    _doneBtnClick() {}
+    _doneBtnClick() {
+        let dateOf = this.state.latestDate;
+        let titleSearch = this.state.titleSearch;
+        let contentType = this.state.contentType;
+        console.log(dateOf+'--'+titleSearch+"--"+contentType)
+    }
 
     // 内容类型多选方法
     _typeSelection(index) {
-        const selectArr = this.state.contentType;
-        if (selectArr.indexOf(index) >= 0) {
-            selectArr.splice(selectArr.indexOf(index))
+        let selectArr = this.state.contentType;
+        if (selectArr.indexOf(index) !== -1) {
+            selectArr.splice(selectArr.indexOf(index),1)
         } else {
             selectArr.push(index);
         }
         this.setState({
             contentType: selectArr
         })
-        console.log(this.state.contentType)
+        //console.log(this.state.contentType)
     }
 
 
@@ -121,7 +126,7 @@ export default class SearchView extends Component {
         let year = ''
         let month = ''
         let day = ''
-        let dateStr = this.state.currentDate
+        let dateStr = this.state.latestDate
         //console.log('dateStr',dateStr)
         year = dateStr.substring(0, 4)
         month = parseInt(dateStr.substring(5, 7))
@@ -146,10 +151,10 @@ export default class SearchView extends Component {
                 })
             },
             onPickerCancel: (pickedValue, pickedIndex) => {
-                console.log('date', pickedValue, pickedIndex);
+                // console.log('date', pickedValue, pickedIndex);
             },
             onPickerSelect: (pickedValue, pickedIndex) => {
-                console.log('date', pickedValue, pickedIndex);
+                // console.log('date', pickedValue, pickedIndex);
             }
         });
         Picker.show();
@@ -213,7 +218,6 @@ const SearchStyles = StyleSheet.create({
     contentTypeTextStyle: {
         width: 70,
         height: 45,
-        paddingLeft: 5,
     },
     byMultipleBtnStyle: {
         width: '46%',
