@@ -35,6 +35,9 @@ target 'Measurement' do
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
 
+  pod 'Picker', :path => '../node_modules/react-native-picker'
+  pod 'react-native-webview', :path => '../node_modules/react-native-webview'
+
   target 'MeasurementTests' do
     inherit! :search_paths
     # Pods for testing
