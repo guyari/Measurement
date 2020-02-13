@@ -12,30 +12,16 @@ export default class ListOfDetails extends Component {
     }
 
     render() {
+        const {state: {params: {data, rowId}}} = this.props.navigation;
+
         return (
             <View style={styles.container}>
-                <Text style={styles.titleStyle}>标题一占位文字</Text>
+                <Text style={styles.titleStyle}>{data.title}</Text>
                 <View style={styles.listOfContentViewStyle}>
                     <View style={styles.listOfBGViewStyle}><Text style={{fontSize: 14}}>摘要</Text></View>
-                    <Text>
-                        摘要部分的内容，摘要部分的内容，摘要部分的内容，摘要部分的内容，摘要部分的内容
-                        摘要部分的内容，摘要部分的内容，摘要部分的内容，摘要部分的内容，摘要部分的内容
-                        摘要部分的内容，摘要部分的内容，摘要部分的内容，摘要部分的内容，摘要部分的内容
-                    </Text>
+                    <Text>{data.content}</Text>
                 </View>
-                <Text style={styles.contentStyle}>
-                    正文部分的内容，正文部分的内容，正文部分的内
-                    容，正文部分的内容，正文部分的内容，正文部分
-                    的内容
-
-                    正文部分的内容，正文部分的内容，正文部分的内
-                    容，正文部分的内容，正文部分的内容，正文部分
-                    的内容
-
-                    正文部分的内容，正文部分的内容，正文部分的内
-                    容，正文部分的内容，正文部分的内容，正文部分
-                    的内容
-                </Text>
+                <Text style={styles.contentStyle}>{data.content}</Text>
             </View>
         );
     }

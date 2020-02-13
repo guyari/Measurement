@@ -12,25 +12,17 @@ export default class GraphicListDetails extends Component {
     }
 
     render() {
+        const {state: {params: {data, rowId}}} = this.props.navigation;
+
         return (
             <View style={styles.container}>
-                <Text style={styles.titleStyle}>标题一占位文字</Text>
+                <Text style={styles.titleStyle}>{data.title}</Text>
                 <View style={styles.authorBGViewStyle}>
-                    <Text style={styles.authorStyle}>普益标准</Text>
-                    <Text style={styles.dateOfStyle}>2019-12-12</Text>
+                    <Text style={styles.authorStyle}>{data.author}</Text>
+                    <Text style={styles.dateOfStyle}>{data.dateOf}</Text>
                 </View>
-                <Image style={styles.imageStyle}/>
-                <Text style={styles.contentStyle}>
-                    正文部分的内容，正文部分的内容，正文部分的内
-                    容，正文部分的内容，正文部分的内容，正文部分
-                    的内容
-                    正文部分的内容，正文部分的内容，正文部分的内
-                    容，正文部分的内容，正文部分的内容，正文部分
-                    的内容
-                    正文部分的内容，正文部分的内容，正文部分的内
-                    容，正文部分的内容，正文部分的内容，正文部分
-                    的内容
-                </Text>
+                <Image style={styles.imageStyle} source={{uri: ''+data.image}}/>
+                <Text style={styles.contentStyle}>{data.content}</Text>
             </View>
         );
     }

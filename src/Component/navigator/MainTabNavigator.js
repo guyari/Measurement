@@ -14,9 +14,9 @@ const TABS = {
             tabBarLabel: '内容市场',
             tabBarIcon: ({focused}) => {
                 if(!focused) {
-                    return <Image source={require('./../../images/home.png')} style={styles.bottomTabIconStyle}/>
+                    return <Image source={{uri: 'home.png'}} style={styles.bottomTabIconStyle}/>
                 } else {
-                    return <Image source={require('./../../images/homed.png')} style={styles.bottomTabIconStyle}/>
+                    return <Image source={{uri: 'homed.png'}} style={styles.bottomTabIconStyle}/>
                 }
             }
         }
@@ -27,9 +27,9 @@ const TABS = {
             tabBarLabel: '浏览记录',
             tabBarIcon: ({focused}) => {
                 if(!focused) {
-                    return <Image source={require('./../../images/train.png')} style={styles.bottomTabIconStyle}/>
+                    return <Image source={{uri: 'train.png'}} style={styles.bottomTabIconStyle}/>
                 } else {
-                    return <Image source={require('./../../images/trained.png')} style={styles.bottomTabIconStyle}/>
+                    return <Image source={{uri: 'trained.png'}} style={styles.bottomTabIconStyle}/>
                 }
             }
         }

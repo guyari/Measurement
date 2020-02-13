@@ -12,20 +12,12 @@ export default class ABriefListDetails extends Component {
     }
 
     render() {
+        const {state: {params: {data, rowId}}} = this.props.navigation;
+
         return (
             <View style={styles.container}>
-                <Text style={styles.titleStyle}>标题一占位文字</Text>
-                <Text style={styles.contentStyle}>
-                    正文部分的内容，正文部分的内容，正文部分的内
-                    容，正文部分的内容，正文部分的内容，正文部分
-                    的内容
-                    正文部分的内容，正文部分的内容，正文部分的内
-                    容，正文部分的内容，正文部分的内容，正文部分
-                    的内容
-                    正文部分的内容，正文部分的内容，正文部分的内
-                    容，正文部分的内容，正文部分的内容，正文部分
-                    的内容
-                </Text>
+                <Text style={styles.titleStyle}>{data.title}</Text>
+                <Text style={styles.contentStyle}>{data.content}</Text>
             </View>
         );
     }
