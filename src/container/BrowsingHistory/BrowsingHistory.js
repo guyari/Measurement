@@ -5,15 +5,25 @@ import {GraphicListStyles} from "../ContentMarket/GraphicList/GraphicList";
 import {ListOfStyles} from "../ContentMarket/ListOf/ListOf";
 import {ABriefListOfStyles} from '../ContentMarket/ABriefListOf/ABriefListOf';
 
+
+let _this = null;
+
 //浏览记录
 export default class BrowsingHistory extends Component {
   static navigationOptions = ({navigation}) => ({
     title: '移动端Demo',
-    headerRight: <Button title='搜索' onPress={()=>navigation.navigate('SearchView')}/>
+    headerRight: <Button title='搜索' onPress={()=>{navigation.navigate('SearchView', {_returnData: _this._returnData.bind(_this)})}}/>
   });
 
   constructor(props) {
     super(props);
+    this.state = {
+        latestDate: '',
+        titleSearch: '',
+        contentType: '',
+    };
+
+    _this = this;
   }
 
   render() {
@@ -28,6 +38,12 @@ export default class BrowsingHistory extends Component {
           />
         </View>
     );
+  }
+
+  // 下一页面goBack返回的值
+  _returnData(latestDate, titleSearch, contentType) {
+      console.log(latestDate, titleSearch, contentType);
+      this.setState({latestDate: latestDate, titleSearch: titleSearch, contentType: contentType});
   }
 
   _renderItem(item, index, section) {

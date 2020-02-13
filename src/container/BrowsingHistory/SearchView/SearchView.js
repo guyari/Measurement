@@ -14,7 +14,7 @@ export default class SearchView extends Component {
             latestDate: this._getCurrentDate(),
             titleSearch: '',
             contentType: [],
-        }
+        };
     }
 
     render() {
@@ -51,7 +51,8 @@ export default class SearchView extends Component {
         let dateOf = this.state.latestDate;
         let titleSearch = this.state.titleSearch;
         let contentType = this.state.contentType;
-        console.log(dateOf+'--'+titleSearch+"--"+contentType)
+        this.props.navigation.state.params._returnData(dateOf, titleSearch, contentType);
+        this.props.navigation.goBack();
     }
 
     // 内容类型多选方法
@@ -126,7 +127,7 @@ export default class SearchView extends Component {
         let year = ''
         let month = ''
         let day = ''
-        let dateStr = this.state.latestDate
+        let dateStr = this._getCurrentDate()
         //console.log('dateStr',dateStr)
         year = dateStr.substring(0, 4)
         month = parseInt(dateStr.substring(5, 7))
@@ -147,7 +148,7 @@ export default class SearchView extends Component {
                 day = day.padStart(2, '0')
                 let str = year + '-' + month + '-' + day
                 this.setState({
-                    currentDate: str,
+                    latestDate: str,
                 })
             },
             onPickerCancel: (pickedValue, pickedIndex) => {
